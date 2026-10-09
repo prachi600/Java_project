@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Pet Adoption Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <h1>🐾 Online Pet Adoption Platform</h1>
+    <div class="role-switcher">
+      <span>Dashboard View:</span>
+      <button class="role-btn active" data-role="adopter">Adopter</button>
+      <button class="role-btn" data-role="shelter">Shelter</button>
+      <button class="role-btn" data-role="admin">Admin</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ADOPTER DASHBOARD -->
+    <div id="adopter-dashboard" class="dashboard-view active">
+      <!-- Quiz Hero Banner -->
+      <div class="hero-banner">
+        <div>
+          <h2>Not sure which pet suits you best?</h2>
+          <p>Take our Smart Match Quiz to discover pets fitting your home and lifestyle!</p>
+        </div>
+        <button id="quiz-btn" class="banner-btn">Take Smart Match Quiz 🎯</button>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <input type="text" id="search-input" placeholder="Search by name (e.g., Bruno, Luna, Slinky)...">
+        <select id="species-filter">
+          <option value="all">All Species</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Rabbit">Rabbit</option>
+          <option value="Reptile">Reptile</option>
+          <option value="Bird">Bird</option>
+          <option value="Small Pet">Small Pet</option>
+        </select>
+        <select id="size-filter">
+          <option value="all">All Sizes</option>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      </div>
+
+      <!-- Pet Cards Grid -->
+      <div class="pet-grid" id="pet-container"></div>
+
+      <!-- Application Tracking -->
+      <div class="application-tracker-panel">
+        <h3>📌 My Active Application Status</h3>
+        <p id="app-status-text">You have not submitted an application yet.</p>
+        <div class="tracker" id="tracker-bar" style="display: none;">
+          <div class="tracker-step active">1. Submitted</div>
+          <div class="tracker-step active">2. Under Review</div>
+          <div class="tracker-step">3. Decision</div>
+          <div class="tracker-step">4. Adopted 🐾</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHELTER DASHBOARD -->
+    <div id="shelter-dashboard" class="dashboard-view">
+      <div class="panel-header">
+        <h2>Shelter Management Panel</h2>
+        <button class="btn btn-secondary">+ Add New Pet Listing</button>
+      </div>
+      <p class="section-desc">Manage listings, health records, and process incoming adoption requests.</p>
+      
+      <div class="panel">
+        <h3>Incoming Requests</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Applicant</th>
+              <th>Pet Requested</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Priya S.</td>
+              <td>Bruno (Beagle)</td>
+              <td>Oct 02, 2026</td>
+              <td><span class="badge badge-pending">Under Review</span></td>
+              <td><button class="btn btn-outline">Review Application</button></td>
+            </tr>
+            <tr>
+              <td>Rahul M.</td>
+              <td>Luna (Persian Cat)</td>
+              <td>Oct 05, 2026</td>
+              <td><span class="badge badge-pending">Under Review</span></td>
+              <td><button class="btn btn-outline">Review Application</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="admin-dashboard" class="dashboard-view">
+      <h2>Admin Control Panel</h2>
+      <p class="section-desc">Review shelter submissions, verify users, and monitor adoption workflows.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <div class="number">128</div>
+        </div>
+        <div class="stat-card">
+          <h3>Pending Listings</h3>
+          <div class="number">14</div>
+        </div>
+        <div class="stat-card">
+          <h3>Applications</h3>
+          <div class="number">37</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- PET DETAILS & HEALTH PASSPORT MODAL -->
+  <div class="modal-overlay" id="pet-modal">
+    <div class="modal-content">
+      <button class="close-modal" id="close-modal-btn">&times;</button>
+      <img id="modal-img" src="" alt="Pet Image">
+      <h2 id="modal-name">Pet Name</h2>
+      <p id="modal-subtext"></p>
+      <p id="modal-description"></p>
+
+      <!-- Health Passport -->
+      <div class="health-passport">
+        <h4>📋 Pet Health Passport</h4>
+        <p><strong>Vaccinations:</strong> <span id="modal-vaccinated">Yes</span></p>
+        <p><strong>Neutered/Spayed:</strong> <span id="modal-neutered">Yes</span></p>
+        <p><strong>Medical Notes:</strong> <span id="modal-health-notes">Regular checkup clear.</span></p>
+      </div>
+
+      <div class="shelter-info-box">
+        <p><strong>Shelter Location:</strong> <span id="modal-shelter">Happy Paws Rescue</span></p>
+        <p><strong>Temperament:</strong> <span id="modal-temperament">Friendly & Active</span></p>
+      </div>
+
+      <button class="btn btn-secondary full-width" id="apply-modal-btn">Submit Application</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Online Pet Adoption Platform. Full Front-End Code.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
